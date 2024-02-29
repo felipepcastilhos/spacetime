@@ -1,0 +1,195 @@
+/* ========== RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+
+:root {
+  font-size: 1rem;
+}
+ 
+/* ========== BASE ========== */
+body {
+  background-color: #121215;
+  color: #EAEAEA;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  
+  display: grid;
+  grid-template-areas: "profile timeline";
+  /* uma coluna de profile e outra de timeline, seus respectivos nomes */
+  grid-template-columns: 1fr 1fr;
+  /* divide fração para cada coluna, nesse caso dividndo o body em 2 frações, 1 em cada coluna */
+  grid-template-rows: 100vh;
+  /* viewport height */
+}
+
+/* ========== NAVIGATION ========== */
+nav {
+  padding: 4rem;
+  grid-area: timeline;
+  /* como foi definido no grid-template-areas, aqui foi feita a atribuição do nav como grid area timeline */
+  
+  overflow-y: scroll;
+  /* para travar o lado esquerdo da tela, especifique o tratamento do overflow na direção vertical */
+  animation: entering 1s ease-in-out;
+}
+
+/* ========== LAYOUT ========== */
+::-webkit-scrollbar {
+width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2c2c31;
+}
+/* caminho, parte de traz da barra por onde ela percorre */
+
+::-webkit-scrollbar-thumb {
+  background-color: #9e9ea0;
+}
+/* propria barra a ser deslizada*/
+
+@keyframes entering {
+  from {
+    opacity: 0;
+    transform: translateY(-12.5rem);
+    /* translateY para manipular posição verticalmente */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+
+}
+/* pode ser utilizado em porcentagem quando for utilizar mais índices */
+/* ou pode ser utilizado / from-to */
+
+.memory {
+  display: flex;
+  /* elementos que sejam flexíveis */
+  flex-direction: column;
+  gap: 1rem;
+  text-decoration: none;
+  /* border: 1px solid red; */
+  margin-bottom: 4rem;
+  /* grid-auto-flow: column; */
+}
+
+.memory small {
+  color: #bebebf;
+  font-size: 0.75rem;
+}
+
+.memory h1 {
+  font-size: 2rem;
+  color: #EAEAEA;
+}
+
+.memory img {
+  width: 100%;
+  height: 17.5rem;
+  object-fit: cover;
+  /* não permite distorcer as dimensões da imagem, mantem uma máscara em tal altura e a imagem ganha ou perde zoom */
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease-in-out;
+  /* transition vai sempre no elemento que é modificado */
+}
+
+.memory div {
+  width: 100%;
+  height: 17.5rem;
+  overflow: hidden;
+  /* ao dar zoom com o hover, mantem escondido o overflow */
+  border-radius: 0.5rem;
+}
+
+.memory img:hover {
+  transform: scale(1.1);
+  /* ao colocar o mouse sobre cada classe memory, será transformado em esclaa 110% */
+}
+
+.memory p {
+  font-size: 1.125rem;
+  color: #bebebf;
+  line-height: 1.75rem;
+  text-align: justify;
+}
+
+aside {
+  grid-area: profile;
+
+  display: flex;
+  /* para usar flexbox */
+  flex-direction: column;
+  /* manter colunas */
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+
+  border-right: 0.0625rem solid;
+  border-image: linear-gradient(#727275, #2c2c31) 1;
+  /* função gradient na borda da imagem entre ambos códigos, e terceiro valor como opacidade */
+
+  background-image: url("./assets/background.svg");
+  background-position: top right;
+  /* utiliza como referência para imagem top e direita da coluna definida em aside*/
+  background-repeat: no-repeat;
+  /* pois ao lado esquerdo estava repetindo a imagem */
+  background-size: auto 100;
+}
+
+aside * {
+  animation: entering 1s ease-in-out;
+}
+
+aside img:nth-child(2) {
+  /* como aside possui 1 img como filhos, seleciona a segunda */
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  /* para deixar imagem redonda */
+  border: 0.25rem solid transparent;
+  background: linear-gradient(#D39E33, #ED5636, #633bbc) padding-box, linear-gradient(260deg, #D39E33, #ED5636, #633bbc) border-box;
+}
+
+aside p {
+  font-size: 2rem;
+  text-align: center;
+}
+
+aside span {
+  font-size: 0.75rem;
+  color: #9e9ea0;
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media (max-width: 768px) {
+  :root {
+    font-size: 0.875rem;
+  }
+  
+  body {
+    grid-template-columns: 1fr;
+    /* 1fr para toda tela */
+    grid-template-rows: 0.2fr 0.8fr;
+    /* 20% e 80% da tela */
+    grid-template-areas: 
+    "profile"
+    "timeline";
+  }
+
+  aside {
+    border-right: none;
+    padding: 2rem 0.75rem;
+  }
+
+  nav {
+    overflow-y: visible;
+    padding: 1.375rem;
+  }
+}
+/* para telas menores que 768px */
