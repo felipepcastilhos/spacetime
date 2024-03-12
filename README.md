@@ -53,6 +53,8 @@ Você pode visualizar o layout do projeto através
 ## Como atualizar o projeto pelo Git
 
 - Fazendo modificação, criando um novo commit(ponto na história), neste caso criando um README:\
+- OBS.: if it needs to change/update the "Remote Origin" use: "git remote set-url origin https://github.com/felipepcastilhos/spacetime.git
+
 - Primeiro levar os arquivos para a area de stage, para preparar para o commit: "git add .";\
 - Criar nosso commit(ponto na história): "git commit -m "add readme with project preview"; //ate então o ponto na história é apenas no computador local;\
 - Bom verificar antes do push, para mostrar os pontos na histórias existentes no computador local pelo git: "git log"; Para sair do log, pressionar "q";\
