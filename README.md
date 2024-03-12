@@ -52,6 +52,7 @@ Você pode visualizar o layout do projeto através
 
 ## Como atualizar o projeto pelo Git
 
+- Se precisar deletar um arquivo do repo: "git rm nameFile.txt"
 - Se precisar definir default branch: "git config --global init.defaultBranch main"
 - Fazendo modificação, criando um novo commit(ponto na história), neste caso criando um README:\
 - OBS.: if it needs to change/update the "Remote Origin" use: "git remote set-url origin https://github.com/felipepcastilhos/spacetime.git
